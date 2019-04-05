@@ -53,7 +53,7 @@ be replaced in the Makefiles with any other preprocessor tool
 Python 3.6.5 has been used for testing but is expected that lower
 python 3 distributions may be compatible
 
-See INSTALL for details
+See INSTALL.md for details
 
 # LICENSE
 

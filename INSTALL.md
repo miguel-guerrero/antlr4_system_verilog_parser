@@ -1,6 +1,6 @@
 
 
-1) ANTLR v4 installation
+# ANTLR v4 installation
 
     The file antlr-4.7.1-complete.jar
 
@@ -12,7 +12,8 @@
     required (also pointed out in the same page above) to include
     run-time python support
 
-2) The SV parser included here doesn't include a preprocessor
+# The SV parser included here doesn't include a preprocessor
+
    The testing assumes 'vppreproc' is installed with either 
    of the following methods:
 
@@ -30,7 +31,7 @@
         $ vppreproc x.vp --simple
 
 
-3) Java binding
+# Java binding
 
 A version of the JDK needs to be installed in your system to run
 the Java binding. The code has been tested with the following:
@@ -40,7 +41,7 @@ the Java binding. The code has been tested with the following:
     OpenJDK 64-Bit Server VM (build 25.181-b13, mixed mode)
 
 
-4) Python binding
+# Python binding
 
 Python binding is very slow at the moment (debug WIP) only suitable for
 small files.
