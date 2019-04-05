@@ -2,30 +2,30 @@
 
 # ANTLR v4 installation
 
-    The file antlr-4.7.1-complete.jar
+The file antlr-4.7.1-complete.jar
 
-    is expected to be present under /usr/local/lib
+is expected to be present under /usr/local/lib
 
-    Please download it from: https://www.antlr.org/download.html
+Please download it from: https://www.antlr.org/download.html
 
-    Note that if using python target additional steps will be
-    required (also pointed out in the same page above) to include
-    run-time python support
+Note that if using python target additional steps will be
+required (also pointed out in the same page above) to include
+run-time python support
 
 # The SV parser included here doesn't include a preprocessor
 
-   The testing assumes 'vppreproc' is installed with either 
-   of the following methods:
+The testing assumes 'vppreproc' is installed with either 
+of the following methods:
 
-     a) $ sudo apt install libverilog-perl
+a) $ sudo apt install libverilog-perl
 
-     b) See: https://metacpan.org/pod/Verilog::Preproc
+b) See: https://metacpan.org/pod/Verilog::Preproc
 
         $ perl -MCPAN -e install Verilog::Netlist::File
         $ perl -MCPAN -e install Verilog::Preproc
         $ perl -MCPAN -e install vppreproc
 
-     Examples of invocation:
+Examples of invocation:
 
         $ vppreproc x.vp
         $ vppreproc x.vp --simple
@@ -60,5 +60,3 @@ I performed the following on my system (but may not be required in yours)
 
     $ cd ~/.local/lib && ln -s python3.6 python3.5
     $ cd ~/bin && ln -s /home/$USERID/pypy3-v6.0.0-linux64/bin/pypy3 pypy3
-
-
