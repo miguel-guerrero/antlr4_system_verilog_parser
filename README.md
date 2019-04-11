@@ -49,6 +49,11 @@ be replaced in the Makefiles with any other preprocessor tool
 - JDK if using java binding (recommended for speed), otherwise 
 just the JRE
 
+- ANTLR distribution. A copy of the version used for testing is under the 
+bin directory for simplicity of installation. It is expected to be 
+copied under /usr/local/lib however it is simple to change the expected
+path in the scripts if required.
+
 - Python 3 if using python binding (with pypy3 recommended)
 
 Python 3.6.5 has been used for testing but is expected that lower

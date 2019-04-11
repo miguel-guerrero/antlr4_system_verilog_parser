@@ -1,1 +1,1 @@
-TESTS/arbiter.v
+TESTS/core_region.sv

@@ -1,1 +1,1 @@
-TESTS/arbiter_tb.v
+TESTS/rstgen.sv

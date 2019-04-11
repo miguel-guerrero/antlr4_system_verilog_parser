@@ -33,16 +33,16 @@ test2:
 test1g:
 	$(SETCP) $(GRUN) $(NAME) source_text $(ARGS) -gui test1.t
 
-%.vs: %.v
+%.vs: %.sv
 	$(SETCP) $(GRUN) $(NAME) source_text $(ARGS) -gui $< > $@ &
 
 %.class: %.java
 	$(SETCP) javac -Xlint $<
 
-%.json: %.v TestJson.class TreeUtils.class 
+%.json: %.sv TestJson.class TreeUtils.class 
 	@$(SETCP) java TestJson $< > $@
 
-%.lisp: %.v TestLisp.class TreeUtils.class $(NAME)Visitor.class
+%.lisp: %.sv TestLisp.class TreeUtils.class $(NAME)Visitor.class
 	@$(SETCP) java TestLisp $< > $@
 
 clean:
