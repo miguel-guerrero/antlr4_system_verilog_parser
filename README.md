@@ -11,9 +11,9 @@ The grammar has been generated using a semi-automated flow out of the
 EBNF description included in SystemVerilog_IEEE_1800-2017.pdf included
 for reference. Manual intervention was required on the following:
 
-    1- Lexer rules (~the last 60 lines of the file)
-    2- Some rules had to be broken to avoid recursivity errors
-    3- Some rules had to be expanded inline
+   1. Lexer rules (~the last 60 lines of the file)
+   2. Some rules had to be broken to avoid recursivity errors
+   3. Some rules had to be expanded inline
 
 Occurences 2, 3 are flagged with TODO markers.
 
@@ -42,13 +42,14 @@ till licensing of that contents is clarified
 
 # DEPENDENCIES
 
-1) The SV parser included here doesn't include a preprocessor
+- The SV parser included here doesn't include a preprocessor
 The testing assumes 'vppreproc' is installed. However this can
 be replaced in the Makefiles with any other preprocessor tool
 
-2) JDK if using java binding
+- JDK if using java binding (recommended for speed), otherwise 
+just the JRE
 
-3) Python 3 if using python binding (with pypy3 recommended)
+- Python 3 if using python binding (with pypy3 recommended)
 
 Python 3.6.5 has been used for testing but is expected that lower
 python 3 distributions may be compatible
