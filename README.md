@@ -57,5 +57,5 @@ See INSTALL.md for details
 
 # LICENSE
 
-See LICENSE and NOTICE File for licensing details
+See LICENSE and NOTICE files for licensing details
 

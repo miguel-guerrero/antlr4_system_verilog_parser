@@ -214,12 +214,17 @@ ansi_port_declaration :
 
 
 // A.1.4 Module items
+// NOTE replaced $fatal, $error, $warning, $info by SYSTEM_TF_IDENTIFIER 
+//elaboration_system_task :
+//      '$fatal'   [ '(' finish_number [',' list_of_arguments ] ')' ] ';'
+//    | '$error'   [ '(' list_of_arguments ')' ] ';'
+//    | '$warning' [ '(' list_of_arguments ')' ] ';' 
+//    | '$info'    [ '(' list_of_arguments ')' ] ';'
+//;
 
 elaboration_system_task :
-      '$fatal' ('(' finish_number (',' list_of_arguments)? ')')? ';'
-    | '$error' ('(' list_of_arguments ')')? ';'
-    | '$warning' ('(' list_of_arguments ')')? ';'
-    | '$info' ('(' list_of_arguments ')')? ';'
+      SYSTEM_TF_IDENTIFIER ('(' finish_number (',' list_of_arguments)? ')')? ';'
+    | SYSTEM_TF_IDENTIFIER ('(' list_of_arguments ')')? ';'
 ;
 
 
