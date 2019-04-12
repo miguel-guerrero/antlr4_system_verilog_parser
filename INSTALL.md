@@ -55,9 +55,7 @@ syntax tree out and perform the work in python if desired.
 
 Installation of pypy3 is recommended to accelerate parsing if using python biding
 
-To install pypy3:
-
-    Follow instructions here: http://pypy.org/download.html
+To install pypy3, follow instructions here: http://pypy.org/download.html
 
 I had to perform the following on my system (may or may not be required in yours)
 
