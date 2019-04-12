@@ -29,16 +29,20 @@ the java binding and provided tools to dump the syntax tree on easy
 to import formats (JSON and lisp style currently supported). Python 
 utilities to import those are provided as examples of use.
 
-$ make
-$ cd java
-$ make arbiter.json   -> parser arbiter.v and generates syntax tree in arbiter.json
-$ make arbiter.lisp   -> parser arbiter.v and generates syntax tree in arbiter.lisp
-$ cd ../python
+    $ make
+    $ cd java
+    $ make test1
+    $ make test2
+    $ make TESTS/core_region.json  -> parse TESTS/core_region.sv and generate syntax tree 
+                                      on TESTS/core_region.json
+    $ make TESTS/core_region.lisp  -> parse TESTS/core_region.sv and generate syntax tree 
+                                      on TESTS/core_region.lisp
 
 # TESTS
 
-Verilog files invoked on Makefile's are currently not part of the distribution
-till licensing of that contents is clarified
+A number of System Verilog files are included as test corpus. They are currently
+taken from the RISC-V Pulpino project but more will be added over time. They are covered
+under their own license and are included here only for convenience.
 
 # DEPENDENCIES
 
@@ -54,7 +58,8 @@ bin directory for simplicity of installation. It is expected to be
 copied under /usr/local/lib however it is simple to change the expected
 path in the scripts if required.
 
-- Python 3 if using python binding (with pypy3 recommended)
+- Python 3 if using python binding (with pypy3 recommended). Testing has
+been performed with Python 3.6.5 and mostly pypy3 for speed.
 
 Python 3.6.5 has been used for testing but is expected that lower
 python 3 distributions may be compatible
