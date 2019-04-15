@@ -8,20 +8,11 @@ all:
 $(NAME)Lexer.py, $(NAME)Parser.py: $(NAME).g4
 	$(ANTLR4) -Dlanguage=Python3 -visitor $(NAME).g4
 
-test1x:
-	@./Test$(NAME)Lexer.py test1.t
+test1: TESTS/rstgen.sv
+	@./Test$(NAME)Visitor.py $<
 
-test1v:
-	@./Test$(NAME)Visitor.py test1.t
-
-test2x:
-	@./Test$(NAME)Lexer.py test2.t
-
-test2v:
-	@./Test$(NAME)Visitor.py test2.t
-
-test3x:
-	@./Test$(NAME)Lexer.py test3.t
+test1x: TESTS/rstgen.sv
+	@./Test$(NAME)Lexer.py $<
 
 %.v: %.vp
 	vppreproc $< --simple > $@

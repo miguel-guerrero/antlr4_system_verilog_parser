@@ -24,17 +24,11 @@ all:
 javac:
 	$(SETCP) javac -Xlint *.java
 
-test1:
-	$(SETCP) time $(GRUN) $(NAME) source_text $(ARGS) test1.t
+test1: TESTS/rstgen.sv
+	$(SETCP) time $(GRUN) $(NAME) source_text $(ARGS) $<
 
-test2:
-	$(SETCP) time $(GRUN) $(NAME) source_text $(ARGS) test2.t
-
-test1g:
-	$(SETCP) $(GRUN) $(NAME) source_text $(ARGS) -gui test1.t
-
-%.vs: %.sv
-	$(SETCP) $(GRUN) $(NAME) source_text $(ARGS) -gui $< > $@ &
+test1g: TESTS/rstgen.sv
+	$(SETCP) $(GRUN) $(NAME) source_text $(ARGS) -gui $<
 
 %.class: %.java
 	$(SETCP) javac -Xlint $<
