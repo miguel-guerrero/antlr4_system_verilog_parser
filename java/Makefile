@@ -10,8 +10,8 @@ AUTO_SRC=\
 
 SRC=\
    TreeUtils.java \
-   TestJson.java \
-   TestLisp.java \
+   Testjson.java \
+   Testlisp.java \
 
 AUTO_OBJ=$(AUTO_SRC:.java=.class)
 OBJ=$(SRC:.java=.class)
@@ -39,11 +39,11 @@ test1g:
 %.class: %.java
 	$(SETCP) javac -Xlint $<
 
-%.json: %.sv TestJson.class TreeUtils.class 
-	@$(SETCP) java TestJson $< > $@
+%.json: %.sv Testjson.class TreeUtils.class
+	@$(SETCP) java Testjson $< > $@
 
-%.lisp: %.sv TestLisp.class TreeUtils.class $(NAME)Visitor.class
-	@$(SETCP) java TestLisp $< > $@
+%.lisp: %.sv Testlisp.class TreeUtils.class $(NAME)Visitor.class
+	@$(SETCP) java Testlisp $< > $@
 
 clean:
 	$(RM) $(NAME)*.java *.class $(NAME)*.interp $(NAME)*.tokens TreeUtils.class
