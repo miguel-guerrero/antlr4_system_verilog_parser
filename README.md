@@ -44,6 +44,12 @@ A number of System Verilog files are included as test corpus. They are currently
 taken from the RISC-V Pulpino project but more will be added over time. They are covered
 under their own license and are included here only for convenience.
 
+# BUGS
+
+This code is in Beta testing. Please report any bugs along with input file and command line used to allow its reproduction to: miguel.a.guerrero at gmail.com
+
+Suggestions for improvement are most welcomed
+
 # DEPENDENCIES
 
 - The SV parser included here doesn't include a preprocessor
