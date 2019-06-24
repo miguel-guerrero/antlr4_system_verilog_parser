@@ -2,13 +2,7 @@
 
 # ANTLR v4 installation
 
-The file antlr-4.7.1-complete.jar
-
-is expected to be present under /usr/local/lib
-
-It can be downloaded from: https://www.antlr.org/download.html
-
-A copy is included under bin directory for convenience. 
+The file bin/antlr-4.7.1-complete.jar is provided with this distribution as a convenience to simplify installation. ANTLRv4 is distributed under its own license. See https://www.antlr.org for details.
 
 Note that if using python target additional steps will be
 required (also pointed out in the same page above) to include
@@ -49,7 +43,7 @@ the Java binding. The code has been tested with the following:
 
 To install the python binding follow the instructions here:
 
-    https://pypi.org/project/antlr4-python3-runtime
+https://pypi.org/project/antlr4-python3-runtime
 
 
 Python binding is very slow at the moment (debug WIP) only suitable for
