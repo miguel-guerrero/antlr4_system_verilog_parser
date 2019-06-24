@@ -1,6 +1,7 @@
 NAME=SvSpec
 ANTLR4=../../antlr4.sh
 GRUN=../../grun.sh
+export CLASSPATH:=.:../../bin/antlr-4.7.1-complete.jar:$(CLASSPATH)
 
 all: 
 	$(ANTLR4) -Dlanguage=Python3 -visitor $(NAME).g4

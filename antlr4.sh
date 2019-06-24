@@ -1,2 +1,3 @@
 #!/bin/sh
-java -jar /usr/local/lib/antlr-4.7.1-complete.jar $*
+dir=`dirname $0`
+java -jar ${dir}/bin/antlr-4.7.1-complete.jar $*

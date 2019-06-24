@@ -6,7 +6,7 @@ if [ "$1" == "" ]; then
 fi
 
 dir=`dirname $0`
-export CLASSPATH="${dir}/java:/usr/local/lib/antlr-4.7.1-complete.jar:${CLASSPATH}" 
+export CLASSPATH="${dir}/java:${dir}/bin/antlr-4.7.1-complete.jar:${CLASSPATH}" 
 
 pyth=0
 ext=json
@@ -20,6 +20,7 @@ while [ "$1" != "" ]; do
 
         echo "=== preprocessing $1 into $inpBase.post" 
         vppreproc $1 --simple > $inpBase.post
+        #iverilog -E $1 -o $inpBase.post
         if [ $? == 0 ]; then
             if [ $pyth == 0 ]; then
                 echo "=== generating $inpBase.$ext with java" 

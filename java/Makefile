@@ -1,7 +1,7 @@
 NAME=Sv
 ANTLR4=../antlr4.sh
 GRUN=../grun.sh
-SETCP=CLASSPATH=".:/usr/local/lib/antlr-4.7.1-complete.jar:${CLASSPATH}" 
+export CLASSPATH:=.:../bin/antlr-4.7.1-complete.jar:$(CLASSPATH)
 ARGS?=-tree -tokens
 AUTO_SRC=\
   $(NAME)Visitor.java \
@@ -22,22 +22,23 @@ all:
 	make -C . -j $(OBJ)
 
 javac:
-	$(SETCP) javac -Xlint *.java
+	javac -Xlint *.java
 
 test1: TESTS/rstgen.sv
-	$(SETCP) time $(GRUN) $(NAME) source_text $(ARGS) $<
+	time $(GRUN) $(NAME) source_text $(ARGS) $<
 
 test1g: TESTS/rstgen.sv
-	$(SETCP) $(GRUN) $(NAME) source_text $(ARGS) -gui $<
+	$(GRUN) $(NAME) source_text $(ARGS) -gui $<
 
 %.class: %.java
-	$(SETCP) javac -Xlint $<
+	@#javac -Xlint $<
+	javac $<
 
 %.json: %.sv Testjson.class TreeUtils.class
-	@$(SETCP) java Testjson $< > $@
+	@java Testjson $< > $@
 
 %.lisp: %.sv Testlisp.class TreeUtils.class $(NAME)Visitor.class
-	@$(SETCP) java Testlisp $< > $@
+	@java Testlisp $< > $@
 
 clean:
 	$(RM) $(NAME)*.java *.class $(NAME)*.interp $(NAME)*.tokens TreeUtils.class

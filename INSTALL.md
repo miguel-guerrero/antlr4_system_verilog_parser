@@ -47,6 +47,11 @@ the Java binding. The code has been tested with the following:
 
 # Python binding
 
+To install the python binding follow the instructions here:
+
+    https://pypi.org/project/antlr4-python3-runtime
+
+
 Python binding is very slow at the moment (debug WIP) only suitable for
 small files.
 
