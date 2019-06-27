@@ -15,7 +15,7 @@ test1x: TESTS/rstgen.sv
 	@./Test$(NAME)Lexer.py $<
 
 %.v: %.vp
-	../preproc.sh $< $@
+	../sv_preproc.sh $< $@
 
 %.vx: %.v $(NAME)Lexer.py ./Test$(NAME)Lexer.py
 	./Test$(NAME)Lexer.py   $< > $@

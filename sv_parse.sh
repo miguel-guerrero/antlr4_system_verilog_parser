@@ -17,7 +17,7 @@ while [ "$1" != "" ]; do
         ext=lisp
     elif [ -f "$1" ]; then
         inpBase=`basename $1`
-	$dir/preproc.sh $1 post.$1
+	$dir/sv_preproc.sh $1 post.$1
         if [ $? == 0 ]; then
             if [ $pyth == 0 ]; then
                 echo "=== generating $inpBase.$ext with java" 

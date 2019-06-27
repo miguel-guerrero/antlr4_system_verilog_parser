@@ -12,8 +12,6 @@ vpp=$(which vppreproc 2> /dev/null)
 ivl=$(which iverilog 2> /dev/null)
 
 if [ -f "$src" ]; then
-
-    echo "=== preprocessing $src into $dst" 
     if [ -x "$vpp" ]; then
         $vpp $src --simple > $dst
     elif [ -x "$ivl" ]; then
@@ -29,4 +27,5 @@ if [ -f "$src" ]; then
     fi
 else
     echo "# Warning: skipping $src, not found"
+    exit 1
 fi
