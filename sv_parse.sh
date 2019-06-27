@@ -11,6 +11,7 @@ if [ "$1" == "" ]; then
     echo "  -lisp   : to geerate lisp style output"
     echo "  -json   : to geerate JSON output"
     echo "  -xml    : to geerate XML output - default"
+    echo " "
     exit 1
 fi
 
@@ -22,12 +23,14 @@ ext=xml
 while [ "$1" != "" ]; do
     if [ "$1" == "-python" ]; then
         pyth_binding=1
+    elif [ "$1" == "-java" ]; then
+        pyth_binding=0
+    elif [ "$1" == "-lisp" ]; then
+        ext=lisp
     elif [ "$1" == "-json" ]; then
         ext=json
     elif [ "$1" == "-xml" ]; then
         ext=xml
-    elif [ "$1" == "-lisp" ]; then
-        ext=lisp
     elif [ -f "$1" ]; then
         inpBase=`basename $1`
         $dir/sv_preproc.sh $1 post.$1
@@ -52,7 +55,7 @@ while [ "$1" != "" ]; do
             exit 1
         fi
     else
-        echo "# Warning: skipping $1, not found"
+        echo "# Warning: skipping $1, not found/not an option"
     fi
 
     shift
