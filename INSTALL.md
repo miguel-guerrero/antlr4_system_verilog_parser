@@ -28,7 +28,7 @@ Examples of invocation:
     $ vppreproc x.vp
     $ vppreproc x.vp --simple
 
-if not found but iverilog (ivarus verilog) is found in the path, then
+if not found but Icarus-Verilog (iverilog) is found in the path, then
 it will be attempted as pre-processor as well.
 
 
@@ -44,10 +44,11 @@ the Java binding. The code has been tested with the following:
 
 # Python binding
 
-To install the python binding follow the instructions here:
+To install the python binding do the following:
 
 
     $ pip install -r requirements.txt
+
 
 This will install antlr4 python3 runtime and other misc packages
 used to process JSON and XML files on the generated syntax trees
