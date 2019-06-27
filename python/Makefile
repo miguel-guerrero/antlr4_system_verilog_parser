@@ -15,8 +15,7 @@ test1x: TESTS/rstgen.sv
 	@./Test$(NAME)Lexer.py $<
 
 %.v: %.vp
-	vppreproc $< --simple > $@
-	#iverilog -E $< -o $@
+	../preproc.sh $< $@
 
 %.vx: %.v $(NAME)Lexer.py ./Test$(NAME)Lexer.py
 	./Test$(NAME)Lexer.py   $< > $@

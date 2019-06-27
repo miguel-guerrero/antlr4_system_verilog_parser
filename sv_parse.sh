@@ -17,20 +17,17 @@ while [ "$1" != "" ]; do
         ext=lisp
     elif [ -f "$1" ]; then
         inpBase=`basename $1`
-
-        echo "=== preprocessing $1 into $inpBase.post" 
-        vppreproc $1 --simple > $inpBase.post
-        #iverilog -E $1 -o $inpBase.post
+	$dir/preproc.sh $1 post.$1
         if [ $? == 0 ]; then
             if [ $pyth == 0 ]; then
                 echo "=== generating $inpBase.$ext with java" 
-                java Test$ext $inpBase.post > $inpBase.$ext 
+                java Test$ext post.$1 > $inpBase.$ext 
             else
                 echo "=== generating $inpBase.$ext with python" 
-                ${dir}/python/TestSvVisitor.py $inpBase.post $inpBase.$ext
+                ${dir}/python/TestSvVisitor.py post.$1 $inpBase.$ext
             fi
         else
-            echo "# Error pre-processing $1, skipping it"
+            exit 1
         fi
     else
         echo "# Warning: skipping $1, not found"
