@@ -27,7 +27,8 @@ test1x: TESTS/rstgen.sv
 	time pypy3 ./Test$(NAME)Visitor.py $< $@
 
 clean:
-	$(RM) $(NAME)Lexer.py $(NAME)Parser.py $(NAME)Listener.py $(NAME)Visitor.py $(NAME)*.tokens $(NAME)*.interp
+	$(RM) $(NAME)Lexer.py $(NAME)Parser.py $(NAME)Listener.py 
+	$(RM) $(NAME)Visitor.py $(NAME)*.tokens $(NAME)*.interp
 	$(RM) -rf __pycache__ *.vs *.vx *.json
 
 .PRECIOUS: %.v

@@ -29,11 +29,11 @@ def parseAndVisit(argv):
     #dump = tree.toStringTree(recog=parser)
 
     if outputFileName:
-        if outputFileName[-5:]==".json":
-            dump = TreeUtils.toJsonStringTree(tree, recog=parser)
-        else: #lisp style is default
+        if outputFileName[-5:]==".lisp":
             dump = TreeUtils.toLispStringTree(tree, recog=parser)
-        with open(outputFileName, 'w') as fout:
+        else: #json style is default
+            dump = TreeUtils.toJsonStringTree(tree, recog=parser)
+        with open(outputFileName, 'wt') as fout:
             print(dump, file=fout)
 
     printer = KeyPrinterVisitor()

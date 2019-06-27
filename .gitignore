@@ -25,6 +25,12 @@ hs_err_pid*
 #verilog test files for now
 *.v
 *.vp
+post.*.sv
+
+#generated files
+*.xml
+*.json
+*.lisp
 
 #python
 __pycache__
