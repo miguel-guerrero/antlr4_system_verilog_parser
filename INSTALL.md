@@ -46,8 +46,11 @@ the Java binding. The code has been tested with the following:
 
 To install the python binding follow the instructions here:
 
-https://pypi.org/project/antlr4-python3-runtime
 
+    $ pip install -r requirements.txt
+
+This will install antlr4 python3 runtime and other misc packages
+used to process JSON and XML files on the generated syntax trees
 
 Python binding is very slow at the moment (debug WIP) only suitable for
 small files.
@@ -59,10 +62,11 @@ Installation of pypy3 is recommended to accelerate parsing if using python bidin
 
 To install pypy3, follow instructions here: http://pypy.org/download.html
 
-I had to perform the following on my system (may or may not be required in yours)
+NOTE: I had to perform the following on my system (may or may not be required in yours)
 
     $ cd ~/.local/lib && ln -s python3.6 python3.5
     
 and make sure it is available under your $path (in this case I'm creating as soft link under ~/bin which is in my $path)
 
     $ cd ~/bin && ln -s /home/$USERID/pypy3-v6.0.0-linux64/bin/pypy3 pypy3
+

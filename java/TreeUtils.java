@@ -24,82 +24,82 @@ public class TreeUtils {
         return "\""+inner+"\"";
     }
 
-	public static String getNodeText(Tree t, List<String> ruleNames) {
-		if ( ruleNames!=null ) {
-			if ( t instanceof RuleContext ) {
-				int ruleIndex = ((RuleContext)t).getRuleContext().getRuleIndex();
-				String ruleName = ruleNames.get(ruleIndex);
-				int altNumber = ((RuleContext) t).getAltNumber();
-				if ( altNumber!=ATN.INVALID_ALT_NUMBER ) {
-					return ruleName+":"+altNumber;
-				}
-				return ruleName;
-			}
-			else if ( t instanceof ErrorNode) {
-				return t.toString();
-			}
-			else if ( t instanceof TerminalNode) {
-				Token symbol = ((TerminalNode)t).getSymbol();
-				if (symbol != null) {
-					String s = symbol.getText();
-					return "'"+s+"'";
-				}
-			}
-		}
-		// no recog for rule names
-		Object payload = t.getPayload();
-		if ( payload instanceof Token ) {
-			return ((Token)payload).getText();
-		}
-		return t.getPayload().toString();
-	}
+    public static String getNodeText(Tree t, List<String> ruleNames) {
+        if ( ruleNames!=null ) {
+            if ( t instanceof RuleContext ) {
+                int ruleIndex = ((RuleContext)t).getRuleContext().getRuleIndex();
+                String ruleName = ruleNames.get(ruleIndex);
+                int altNumber = ((RuleContext) t).getAltNumber();
+                if ( altNumber!=ATN.INVALID_ALT_NUMBER ) {
+                    return ruleName+":"+altNumber;
+                }
+                return ruleName;
+            }
+            else if ( t instanceof ErrorNode) {
+                return t.toString();
+            }
+            else if ( t instanceof TerminalNode) {
+                Token symbol = ((TerminalNode)t).getSymbol();
+                if (symbol != null) {
+                    String s = symbol.getText();
+                    return "'"+s+"'";
+                }
+            }
+        }
+        // no recog for rule names
+        Object payload = t.getPayload();
+        if ( payload instanceof Token ) {
+            return ((Token)payload).getText();
+        }
+        return t.getPayload().toString();
+    }
 
-	public static String toLispStringTree(Tree t, Parser recog) {
-	    return toLispStringTree(t, recog, "\t");
-	}
+    public static String toLispStringTree(Tree t, Parser recog) {
+        return toLispStringTree(t, recog, " ");
+    }
 
-	public static String toLispStringTree(Tree t, Parser recog, String indent) {
-		String[] ruleNames = recog != null ? recog.getRuleNames() : null;
-		List<String> ruleNamesList = ruleNames != null ? Arrays.asList(ruleNames) : null;
-		return toLispStringTree(t, ruleNamesList, indent, 0);
-	}
+    public static String toLispStringTree(Tree t, Parser recog, String indent) {
+        String[] ruleNames = recog != null ? recog.getRuleNames() : null;
+        List<String> ruleNamesList = ruleNames != null ? Arrays.asList(ruleNames) : null;
+        return toLispStringTree(t, ruleNamesList, indent, 0);
+    }
 
-	public static String toLispStringTree(final Tree t, final List<String> ruleNames, String indent, int level) {
-		String s = Utils.escapeWhitespace(getNodeText(t, ruleNames), false);
+    public static String toLispStringTree(final Tree t, final List<String> ruleNames, String indent, int level) {
+        String s = Utils.escapeWhitespace(getNodeText(t, ruleNames), false);
         String tab = "";
         if (level > 0)
             tab = new String(new char[level]).replace("\0", indent);
-		if (t.getChildCount() == 0)
+        if (t.getChildCount() == 0)
             if (s.charAt(0)=='\'')
                 return "\n"+tab+escapeInnerSingleQuotes(s);
-		StringBuilder buf = new StringBuilder();
+        StringBuilder buf = new StringBuilder();
         if (level > 0)
             buf.append("\n"+tab);
-		buf.append("("+s);
-		for (int i = 0; i<t.getChildCount(); i++)
-			buf.append(toLispStringTree(t.getChild(i), ruleNames, indent, level+1));
-		buf.append(")");
-		return buf.toString();
-	}
-
-	public static String toJsonStringTree(Tree t, Parser recog) {
-	    return toJsonStringTree(t, recog, "\t");
+        buf.append("("+s);
+        for (int i = 0; i<t.getChildCount(); i++)
+            buf.append(toLispStringTree(t.getChild(i), ruleNames, indent, level+1));
+        buf.append(")");
+        return buf.toString();
     }
 
-	public static String toJsonStringTree(Tree t, Parser recog, String indent) {
-		String[] ruleNames = recog != null ? recog.getRuleNames() : null;
-		List<String> ruleNamesList = ruleNames != null ? Arrays.asList(ruleNames) : null;
-		return toJsonStringTree(t, ruleNamesList, indent, 0, false);
-	}
+    public static String toJsonStringTree(Tree t, Parser recog) {
+        return toJsonStringTree(t, recog, " ");
+    }
 
-	public static String toJsonStringTree(final Tree t, final List<String> ruleNames, 
+    public static String toJsonStringTree(Tree t, Parser recog, String indent) {
+        String[] ruleNames = recog != null ? recog.getRuleNames() : null;
+        List<String> ruleNamesList = ruleNames != null ? Arrays.asList(ruleNames) : null;
+        return toJsonStringTree(t, ruleNamesList, indent, 0, false);
+    }
+
+    public static String toJsonStringTree(final Tree t, final List<String> ruleNames, 
             String indent, int level, boolean inArray) {
 
-		String s = Utils.escapeWhitespace(getNodeText(t, ruleNames), false);
+        String s = Utils.escapeWhitespace(getNodeText(t, ruleNames), false);
         boolean terminal = s.charAt(0) == '\'';
 
         int numChilds = t.getChildCount();
-		StringBuilder buf = new StringBuilder();
+        StringBuilder buf = new StringBuilder();
         String tab = "";
         if (level > 0)
             tab = new String(new char[level]).replace("\0", indent);

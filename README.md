@@ -68,7 +68,7 @@ path in the scripts if required.
 been performed with Python 3.6.5 and mostly pypy3 for speed.
 
 Python 3.6.5 has been used for testing but is expected that lower
-python 3 distributions may be compatible
+python 3 distributions may be compatible. 
 
 See INSTALL.md for details
 
