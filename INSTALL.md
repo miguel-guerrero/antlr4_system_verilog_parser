@@ -28,6 +28,9 @@ Examples of invocation:
     $ vppreproc x.vp
     $ vppreproc x.vp --simple
 
+if not found but iverilog (ivarus verilog) is found in the path, then
+it will be attempted as pre-processor as well.
+
 
 # Java binding
 
