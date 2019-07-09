@@ -1,0 +1,9 @@
+https://stackoverflow.com/questions/38148460/pip-install-libxml2-failed
+
+sudo apt-get install libxml2-dev libxslt-dev python-dev
+
+pip install lxml
+
+https://stackoverflow.com/questions/1319385/using-xpath-in-elementtree
+
+
