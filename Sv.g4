@@ -221,6 +221,7 @@ ansi_port_declaration :
 //    | '$warning' [ '(' list_of_arguments ')' ] ';' 
 //    | '$info'    [ '(' list_of_arguments ')' ] ';'
 //;
+// TODO qualify with the values above
 
 elaboration_system_task :
       SYSTEM_TF_IDENTIFIER ('(' finish_number (',' list_of_arguments)? ')')? ';'
@@ -2951,8 +2952,14 @@ specify_terminal_descriptor :
     | specify_output_terminal_descriptor
 ;
 
+/*
 edge_control_specifier :
       'edge' EDGE_LIST
+;
+*/
+
+edge_control_specifier :
+      EDGE_LIST
 ;
 
 timing_check_condition :
@@ -3350,10 +3357,22 @@ primary_literal :
 
 // TODO restrict DECIMAL_NUMBER to UNSIGNED_NUMBER
 
+/*
 time_literal :
       DECIMAL_NUMBER time_unit=('s' | 'ms' | 'us' | 'ns' | 'ps' | 'fs')
     | FIXED_POINT_NUMBER time_unit2=('s' | 'ms' | 'us' | 'ns' | 'ps' | 'fs')
 ;
+*/
+
+time_literal :
+      DECIMAL_NUMBER time_unit 
+    | FIXED_POINT_NUMBER time_unit 
+;
+
+time_unit:
+    IDENTIFIER /* TODO need attribute */
+;
+
 
 implicit_class_handle :
       'this'
@@ -3755,7 +3774,8 @@ variable_identifier :
  BLOCK_COMMENT : '/*' .*? '*/' -> channel (HIDDEN);
  WHITE_SPACE : (' ' | '\t' | '\r'? '\n') -> channel (HIDDEN);
  UNBASED_UNSIZED_LITERAL : ['] ('0'|'1'|Z_OR_X) ;
- EDGE_LIST : '[' EDGE_DESCRIPTOR (',' EDGE_DESCRIPTOR)* ']' ;
+ //EDGE_LIST : '[' EDGE_DESCRIPTOR (',' EDGE_DESCRIPTOR)* ']' ;
+ EDGE_LIST : 'edge' WS '[' EDGE_DESCRIPTOR (',' EDGE_DESCRIPTOR)* ']' ;
  HEX_NUMBER :    NON_ZERO_UNSIGNED_NUMBER ? HEX_BASE    HEX_VALUE ;
  OCTAL_NUMBER  : NON_ZERO_UNSIGNED_NUMBER ? OCTAL_BASE  OCTAL_VALUE ;
  BINARY_NUMBER : NON_ZERO_UNSIGNED_NUMBER ? BINARY_BASE BINARY_VALUE ;

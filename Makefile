@@ -1,6 +1,6 @@
 
 all:
-	make -C Ebnf all
+	#make -C Ebnf all
 	make -C python all
 	make -C java all
 
