@@ -1,4 +1,5 @@
 #!/bin/bash
+#set -o xtrace
 
 if [ "$1" == "" ]; then
     echo "Usage: $0 [-python|-java] [-lisp|-json|-xml] filename ..."
@@ -15,8 +16,9 @@ if [ "$1" == "" ]; then
     exit 1
 fi
 
-dir=`dirname $0`
-export CLASSPATH="${dir}/java:${dir}/bin/antlr-4.7.1-complete.jar:${CLASSPATH}" 
+top_bin=`dirname $0`
+top=$top_bin/..
+export CLASSPATH="${top}/java:${top_bin}/antlr-4.7.1-complete.jar:${CLASSPATH}" 
 
 pyth_binding=0
 ext=xml
@@ -34,22 +36,22 @@ while [ "$1" != "" ]; do
     elif [ -f "$1" ]; then
         inpBase=`basename $1`
         postProc=post.$inpBase
-        $dir/sv_preproc.sh $1 $postProc
+        $top_bin/sv_preproc.sh $1 $postProc
         if [ $? == 0 ]; then
             if [ $pyth_binding == 0 ]; then
                 echo "=== generating $inpBase.$ext with java binding ===" 
                 if [ $ext == xml ]; then
-                    java Testjson $postProc | $dir/bin/j2x_filter.py > $inpBase.$ext 
+                    java Testjson $postProc | $top_bin/j2x_filter.py > $inpBase.$ext 
                 else
                     java Test$ext $postProc > $inpBase.$ext 
                 fi
             else
                 echo "=== generating $inpBase.$ext with python binding ===" 
                 if [ $ext == xml ]; then
-                    ${dir}/python/TestSvVisitor.py $postProc /dev/stdout | \
-                        ${dir}/bin/j2x_filter.py > $inpBase.xml
+                    ${top}/python/TestSvVisitor.py $postProc /dev/stdout | \
+                        $top_bin/j2x_filter.py > $inpBase.xml
                 else
-                    ${dir}/python/TestSvVisitor.py $postProc $inpBase.$ext
+                    ${top}/python/TestSvVisitor.py $postProc $inpBase.$ext
                 fi
             fi
         else
