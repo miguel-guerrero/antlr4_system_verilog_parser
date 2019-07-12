@@ -2200,6 +2200,7 @@ event_control :
     | '@' '(' event_expression ')'
     | '@*'
     | '@' '(' '*' ')'
+    | '@' '(*' ')' // TODO added to resolve '(*' token ambiguity
     | '@' ps_or_hierarchical_sequence_identifier
 ;
 
