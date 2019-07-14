@@ -1,7 +1,11 @@
 NAME=Sv
 ANTLR4=../antlr4.sh
 GRUN=../grun.sh
-export CLASSPATH:=.:../bin/antlr-4.7.1-complete.jar:$(CLASSPATH)
+
+BIN:=../bin
+JAR:=$(shell ls ${BIN}/antlr*.jar)
+export CLASSPATH:=.:${JAR}:${CLASSPATH}
+
 ARGS?=-tree -tokens
 AUTO_SRC=\
   $(NAME)Visitor.java \

@@ -2,7 +2,10 @@ NAME=SimpleHtml
 LEX_NAME=HtmlLexer
 ANTLR4=../../antlr4.sh
 GRUN=../../grun.sh
-export CLASSPATH:=.:../../bin/antlr-4.7.1-complete.jar:$(CLASSPATH)
+
+BIN:=../../bin
+JAR:=$(shell ls ${BIN}/antlr*.jar)
+export CLASSPATH:=.:${JAR}:${CLASSPATH}
 
 all: 
 	$(ANTLR4) $(LEX_NAME).g4

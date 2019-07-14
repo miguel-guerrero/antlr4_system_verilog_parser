@@ -18,7 +18,8 @@ fi
 
 top_bin=`dirname $0`
 top=$top_bin/..
-export CLASSPATH="${top}/java:${top_bin}/antlr-4.7.1-complete.jar:${CLASSPATH}" 
+JAR=$(ls $top_bin/antlr*.jar)
+export CLASSPATH="${top}/java:$JAR:$CLASSPATH"
 
 pyth_binding=0
 ext=xml
