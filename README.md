@@ -69,7 +69,7 @@ if you get this error:
     errors preprocessing Verilog program.
     #Error pre-processing TESTS/core_region.sv, skipping it
 
-The reason is that the parser requires an external system-verilog preprocessor (I.e. it parser verilog without pre-processing directives or already expanded). The script looks for two open source ones in the path, ***vppreproc*** and ***iverilog*** (Icarus verilog used as pre-processor only). At least one of them needs to be installed and available in the path
+The reason is that the parser requires an external system-verilog preprocessor (I.e. it parses verilog without pre-processing directives, or already expanded). The script looks for two open source tools in the path, ***vppreproc*** and ***iverilog*** (Icarus verilog used as pre-processor only). At least one of them needs to be installed and available in the path.
 
 # TESTS
 
