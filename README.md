@@ -4,12 +4,12 @@ ANTLR grammar for System Verilog 2017 HDL
 
 # INTRODUCTION
 
-This package main contents is the file Sv.g4 containing a 
+This package main contents is the file **Sv.g4** containing a 
 System Verilog 2017 grammar for ANTLR v4.
 
-The grammar has been generated using a semi-automated flow out of the
-EBNF description included in SystemVerilog_IEEE_1800-2017.pdf included
-for reference. Manual intervention was required on the following:
+The grammar has been generated using a semi-automated flow, out of the
+EBNF description included in SystemVerilog_IEEE_1800-2017.pdf (included
+in the ```doc``` folder for reference). Manual intervention was required on the following:
 
    1. Lexer rules (~the last 60 lines of the file)
    2. Some rules had to be broken to avoid recursivity errors
@@ -26,29 +26,62 @@ Examples on Java and Python bindings are provided. As of today Python
 binding generates very slow executables over such a large grammar.
 Performance debugging is in progress. A recommeded flow is to use
 the java binding and provided tools to dump the syntax tree on easy 
-to import formats (JSON and lisp style currently supported). Python 
+to import formats (JSON, XML and lisp styles are currently supported). Python 
 utilities to import those are provided as examples of use.
 
-    $ make
-    $ cd java
+    $ make                         -> process grammar though antlr4 to generate python/java artifacts
+    $ cd java                      
     $ make test1
-    $ make test2
-    $ make TESTS/core_region.json  -> parse TESTS/core_region.sv and generate syntax tree 
-                                      on TESTS/core_region.json
-    $ make TESTS/core_region.lisp  -> parse TESTS/core_region.sv and generate syntax tree 
-                                      on TESTS/core_region.lisp
+    $ make TESTS/rstgen.json       -> parse TESTS/rstgen.sv and generate syntax tree 
+                                      dumped onto TESTS/core_region.json
+    $ make TESTS/rstgen.lisp       -> parse TESTS/rstgen.sv and generate syntax tree 
+                                      dumped onto TESTS/core_region.lisp
+
+# HOWTO
+
+To process a System Verilog file and generate a syntax tree the wrapper script ```sv_parse.sh``` is provided:
+
+    $ make                          -> do once
+    $ ./sv_parshe.sh
+    
+    Usage: ./sv_parse.sh [-python|-java] [-lisp|-json|-xml] filename ...
+
+    Code binding to use is defined by the following:
+      -python : to use python binding
+      -java   : to use java binding - default
+
+    Output format is defined by the following
+      -lisp   : to geerate lisp style output
+      -json   : to geerate JSON output
+      -xml    : to geerate XML output - default
+
+
+The recommended flow is to use the jave binding (for speed) and XML output format, for simpler post-processing. For example:
+
+    $ ./sv_parse.sh -xml TESTS/rstgen.sv 
+    
+ The result would be on the same path with the extension renamed as .xml (or .json/.lisp if those output formats are requested)
+   
+# COMMON ISSUES
+
+if you get this error:
+
+    errors preprocessing Verilog program.
+    #Error pre-processing TESTS/core_region.sv, skipping it
+
+The reason is that the parser requires an external system-verilog preprocessor (I.e. it parser verilog without pre-processing directives or already expanded). The script looks for two open source ones in the path, ***vppreproc*** and ***iverilog*** (Icarus verilog used as pre-processor only). At least one of them needs to be installed and available in the path
 
 # TESTS
 
 A number of System Verilog files are included as test corpus. They are currently
 taken from the RISC-V Pulpino project but more will be added over time. They are covered
-under their own license and are included here only for convenience.
+under their own license, and are included here only as a convenience.
 
 # BUGS
 
 This code is in Beta testing. Please report any bugs along with input file and command line used to allow its reproduction to: miguel.a.guerrero at gmail.com
 
-Suggestions for improvement are most welcomed
+Suggestions for improvement and contributions are most welcomed
 
 # DEPENDENCIES
 
@@ -58,6 +91,9 @@ be replaced in the Makefiles with any other preprocessor tool
 
 - JDK if using java binding (recommended for speed), otherwise 
 just the JRE
+
+- Either ***vppreproc*** and ***iverilog***  to be installed in the path to be
+used as verilog pre-processors
 
 - ANTLR distribution. A copy of the version used for testing is under the 
 bin directory for simplicity of installation. It is expected to be 
