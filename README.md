@@ -90,7 +90,11 @@ remember you need to do ```make``` at least once
 
 A number of System Verilog files are included as test corpus under the ```TESTS``` directory. They are currently
 taken from the RISC-V Pulpino project but more will be added over time. They are covered
-under their own license, and are included here only as a convenience.
+under their own license, and are included here only as a convenience. To run them do:
+
+
+    $ make                          -> do once
+    $ ./sv_parse.sh TESTS/*.sv
 
 # BUGS
 
