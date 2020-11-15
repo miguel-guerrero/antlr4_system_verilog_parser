@@ -15,7 +15,7 @@ if [ -f "$src" ]; then
     if [ -x "$vpp" ]; then
         $vpp $src --simple > $dst
     elif [ -x "$ivl" ]; then
-        $ivl -E $src -o $dst
+        $ivl -E -o $dst $src
     else
         echo "ERROR: No preprocessor found in path (checked for vppreproc and iverilog)"
         echo "please install one of them"

@@ -26,7 +26,7 @@ all:
 	make -C . -j $(OBJ)
 
 javac:
-	javac -Xlint *.java
+	javac -Xlint:deprecation *.java
 
 test1: TESTS/rstgen.sv
 	time $(GRUN) $(NAME) source_text $(ARGS) $<
@@ -35,8 +35,7 @@ test1g: TESTS/rstgen.sv
 	$(GRUN) $(NAME) source_text $(ARGS) -gui $<
 
 %.class: %.java
-	@#javac -Xlint $<
-	javac $<
+	javac -Xlint:deprecation $<
 
 %.json: %.sv Testjson.class TreeUtils.class
 	@java Testjson $< > $@

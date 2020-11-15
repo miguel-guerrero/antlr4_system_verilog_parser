@@ -106,6 +106,10 @@ been performed with Python 3.6.5 and mostly pypy3 for speed.
 Python 3.6.5 has been used for testing but is expected that lower
 python 3 distributions may be compatible. 
 
+- The following python3 packages:
+
+  dict2xml : pip3 install dict2xml
+
 See INSTALL.md for details
 
 # LICENSE

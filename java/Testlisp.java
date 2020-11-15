@@ -1,20 +1,21 @@
 import java.io.IOException;
 
-import org.antlr.v4.runtime.ANTLRFileStream;
-import org.antlr.v4.runtime.ANTLRInputStream;
-import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.tree.ParseTree;
-import org.antlr.v4.runtime.tree.ParseTreeWalker;
+import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.tree.*;
 
 public class Testlisp {
 
     public static void main(String[] args) throws IOException {
         
-        String fileName = "adder.v";
-        if (args.length > 0)
-            fileName = args[0];
+        String fileName = "";
+        if (args.length != 1) {
+            System.out.println("ERROR: no input file specified");
+            System.exit(1);
+        }
 
-        ANTLRInputStream input = new ANTLRFileStream(fileName);
+        fileName = args[0];
+
+        CharStream input = CharStreams.fromFileName(fileName);
         
         SvLexer lexer = new SvLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);

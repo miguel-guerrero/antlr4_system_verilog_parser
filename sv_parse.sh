@@ -16,7 +16,7 @@ if [ "$1" == "" ]; then
 fi
 
 dir=`dirname $0`
-export CLASSPATH="${dir}/java:${dir}/bin/antlr-4.7.1-complete.jar:${CLASSPATH}" 
+export CLASSPATH="${dir}/java:${dir}/bin/antlr-4.8-complete.jar:${CLASSPATH}"
 
 pyth_binding=0
 ext=xml
@@ -33,22 +33,22 @@ while [ "$1" != "" ]; do
         ext=xml
     elif [ -f "$1" ]; then
         inpBase=`basename $1`
-        $dir/sv_preproc.sh $1 post.$1
+        $dir/sv_preproc.sh $1 $1.post
         if [ $? == 0 ]; then
             if [ $pyth_binding == 0 ]; then
-                echo "=== generating $inpBase.$ext with java binding ===" 
+                echo "=== generating $inpBase.$ext with java binding ==="
                 if [ $ext == xml ]; then
-                    java Testjson post.$1 | $dir/bin/j2x_filter.py > $inpBase.$ext 
+                    java Testjson $1.post | $dir/bin/j2x_filter.py > $inpBase.$ext
                 else
-                    java Test$ext post.$1 > $inpBase.$ext 
+                    java Test$ext $1.post > $inpBase.$ext
                 fi
             else
-                echo "=== generating $inpBase.$ext with python binding ===" 
+                echo "=== generating $inpBase.$ext with python binding ==="
                 if [ $ext == xml ]; then
-                    ${dir}/python/TestSvVisitor.py post.$1 /dev/stdout | \
+                    ${dir}/python/TestSvVisitor.py $1.post /dev/stdout | \
                         ${dir}/bin/j2x_filter.py > $inpBase.xml
                 else
-                    ${dir}/python/TestSvVisitor.py post.$1 $inpBase.$ext
+                    ${dir}/python/TestSvVisitor.py $1.post $inpBase.$ext
                 fi
             fi
         else

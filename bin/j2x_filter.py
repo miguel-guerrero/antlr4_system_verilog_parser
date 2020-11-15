@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import sys
 import json
@@ -10,4 +10,3 @@ sys.stdout.write('<?xml version="1.0"?>\n')
 sys.stdout.write('<top>')
 sys.stdout.write(dict2xml.dict2xml(d))
 sys.stdout.write('</top>\n')
-

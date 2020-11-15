@@ -2,7 +2,7 @@
 
 # ANTLR v4 installation
 
-The file bin/antlr-4.7.1-complete.jar is provided with this distribution as a convenience to simplify installation. ANTLRv4 is distributed under its own license. See https://www.antlr.org for details.
+The file bin/antlr-4.8-complete.jar is provided with this distribution as a convenience to simplify installation. ANTLRv4 is distributed under its own license. See https://www.antlr.org for details.
 
 Note that if using python target additional steps will be
 required (also pointed out in the same page above) to include
@@ -29,7 +29,7 @@ Examples of invocation:
     $ vppreproc x.vp --simple
 
 if not found but Icarus-Verilog (iverilog) is found in the path, then
-it will be attempted as pre-processor as well.
+Icarus Verilog (http://iverilog.icarus.com/) will be used as pre-processor.
 
 
 # Java binding
@@ -44,10 +44,10 @@ the Java binding. The code has been tested with the following:
 
 # Python binding
 
-To install the python binding do the following:
+To install the python binding dependencies do the following:
 
 
-    $ pip install -r requirements.txt
+    $ sudo python3 -mpip install -r requirements.txt
 
 
 This will install antlr4 python3 runtime and other misc packages
