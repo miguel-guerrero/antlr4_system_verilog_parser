@@ -56,11 +56,11 @@ To process a System Verilog file and generate a syntax tree the wrapper script `
       -xml    : to geerate XML output - default
 
 
-The recommended flow is to use the jave binding (for speed) and XML output format, for simpler post-processing. For example:
+The recommended flow is to use the java binding (fastest) and XML output format, for simpler post-processing. For example:
 
     $ ./sv_parse.sh -xml TESTS/rstgen.sv 
     
- The result would be on the same path with the extension renamed as .xml (or .json/.lisp if those output formats are requested)
+ The result would be 'rstgen.sv.xml' (it would append .json/.lisp if those output formats are requested)
    
 # COMMON ISSUES
 
@@ -69,11 +69,11 @@ if you get this error:
     errors preprocessing Verilog program.
     #Error pre-processing TESTS/core_region.sv, skipping it
 
-The reason is that the parser requires an external system-verilog preprocessor (I.e. it parses verilog without pre-processing directives, or already expanded). The script looks for two open source tools in the path, ***vppreproc*** and ***iverilog*** (Icarus verilog used as pre-processor only). At least one of them needs to be installed and available in the path.
+The reason is that the parser requires an external system-verilog preprocessor (I.e. it parses verilog without pre-processing directives, or assumes they are  already expanded). The script looks for two open source tools in the path, ***vppreproc*** and ***iverilog*** (Icarus verilog used as pre-processor only). At least one of them needs to be installed and available in the path.
 
 # TESTS
 
-A number of System Verilog files are included as test corpus. They are currently
+A number of System Verilog files are included as test corpus under the ```TESTS``` directory. They are currently
 taken from the RISC-V Pulpino project but more will be added over time. They are covered
 under their own license, and are included here only as a convenience.
 
