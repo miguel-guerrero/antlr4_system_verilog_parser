@@ -20,14 +20,18 @@ Occurences 2, 3 are flagged with TODO markers.
 The flow has been semi-automated with the intent to cover the full
 spec (nothing has been intentionally left behind out of the grammar).
 
+Aside for the grammar few utilities are included to facilitate processing of the generated syntax tree.
+
 # BINDINGS
 
-Examples on Java and Python bindings are provided. As of today Python
-binding generates very slow executables over such a large grammar.
-Performance debugging is in progress. A recommeded flow is to use
+Examples on **Java** and **Python** bindings are provided. As of today Python
+binding generates very slow executables over such a large grammar (
+Performance debugging is in progress). A recommeded flow is to use
 the java binding and provided tools to dump the syntax tree on easy 
 to import formats (JSON, XML and lisp styles are currently supported). Python 
-utilities to import those are provided as examples of use.
+utilities to import those are provided as examples of use. Using native anltr4 in java is of
+course another option. Only java and python bindings have been tested by the author, but the 
+grammar definition should be equally usable on other bindings.
 
     $ make                         -> process grammar though antlr4 to generate python/java artifacts
     $ cd java                      
