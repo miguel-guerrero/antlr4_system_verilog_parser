@@ -64,12 +64,27 @@ The recommended flow is to use the java binding (fastest) and XML output format,
    
 # COMMON ISSUES
 
-if you get this error:
+1. if you get this error:
 
-    errors preprocessing Verilog program.
-    #Error pre-processing TESTS/core_region.sv, skipping it
+```
+errors preprocessing Verilog program.
+#Error pre-processing TESTS/core_region.sv, skipping it
+```
 
 The reason is that the parser requires an external system-verilog preprocessor (I.e. it parses verilog without pre-processing directives, or assumes they are  already expanded). The script looks for two open source tools in the path, ***vppreproc*** and ***iverilog*** (Icarus verilog used as pre-processor only). At least one of them needs to be installed and available in the path.
+
+2. If you see this:
+
+```
+Error: Could not find or load main class Testjson
+```
+
+or
+
+    Error: Could not find or load main class Testlisp
+
+remember you need to do ```make``` at least once
+
 
 # TESTS
 
