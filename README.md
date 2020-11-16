@@ -68,7 +68,7 @@ The recommended flow is to use the java binding (fastest) and XML output format,
    
 # DATA EXTRACTION
 
-One example of data extraction from a generated XML file is included under ```extract``` directory. It extracts few iterms from interfaces defined in that file. For example:
+One example of data extraction from a generated XML file is included under ```extract``` directory. It extracts few items from interfaces defined in that file. For example:
 
     $ ./sv_parse.sh -xml TESTS/apb_bus.sv
     $ extract/dump_xml_iface.py apb_bus.sv.xml
