@@ -66,6 +66,29 @@ The recommended flow is to use the java binding (fastest) and XML output format,
     
  The result would be 'rstgen.sv.xml' (it would append .json/.lisp if those output formats are requested)
    
+# DATA EXTRACTION
+
+One example of data extraction from a generated XML file is included under ```extract``` directory. It extracts few iterms from interfaces defined in that file. For example:
+
+    $ ./sv_parse.sh -xml TESTS/apb_bus.sv
+    $ extract/dump_xml_iface.py apb_bus.sv.xml
+
+Generates:
+
+```
+interface name: APB_BUS
+paramId: APB_ADDR_WIDTH
+paramId: APB_DATA_WIDTH
+variable_identifier: paddr
+variable_identifier: pwdata
+variable_identifier: pwrite
+variable_identifier: psel
+variable_identifier: penable
+variable_identifier: prdata
+variable_identifier: pready
+variable_identifier: pslverr
+```
+   
 # COMMON ISSUES
 
 1. if you get this error:
