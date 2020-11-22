@@ -48,7 +48,12 @@ To install the python binding dependencies do the following:
 
 
     $ sudo python3 -mpip install -r requirements.txt
-
+    
+ or
+ 
+    $ python3 -mpip install -r requirements.txt --user
+ 
+if root permissions are not available.
 
 This will install antlr4 python3 runtime and other misc packages
 used to process JSON and XML files on the generated syntax trees
