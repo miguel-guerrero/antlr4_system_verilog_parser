@@ -132,14 +132,12 @@ Suggestions for improvement and contributions are most welcomed
 # DEPENDENCIES
 
 - The SV parser included here doesn't include a preprocessor
-The testing assumes 'vppreproc' is installed. However this can
-be replaced in the Makefiles with any other preprocessor tool
+The testing assumes either **vppreproc** or **iverilog** are 
+installed and in the path to be used as pre-processors. However this can
+be replaced in the scripts with any other preprocessor tool
 
 - JDK if using java binding (recommended for speed), otherwise 
 just the JRE
-
-- Either ***vppreproc*** and ***iverilog***  to be installed in the path to be
-used as verilog pre-processors
 
 - ANTLR distribution. A copy of the version used for testing is under the 
 bin directory for simplicity of installation. It is expected to be 
@@ -152,9 +150,7 @@ been performed with Python 3.6.5 and mostly pypy3 for speed.
 Python 3.6.5 has been used for testing but is expected that lower
 python 3 distributions may be compatible. 
 
-- The following python3 packages:
-
-  dict2xml : pip3 install dict2xml
+- Some python packages
 
 See INSTALL.md for details
 
