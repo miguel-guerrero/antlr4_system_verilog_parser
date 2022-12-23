@@ -24,8 +24,8 @@ Aside for the grammar few utilities are included to facilitate processing of the
 
 # QUICK START
 
-  $ ./install.sh
-  $ ./regress.sh
+    $ ./install.sh
+    $ ./regress.sh
 
 # BINDINGS
 
@@ -130,6 +130,10 @@ under their own license, and are included here only as a convenience. To run the
 
     $ make                          -> do once
     $ ./sv_parse.sh TESTS/*.sv
+    
+You can also run all of them:
+
+    $ ./regress.sh
 
 # BUGS
 
