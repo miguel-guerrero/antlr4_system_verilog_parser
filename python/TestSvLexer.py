@@ -4,23 +4,26 @@ from antlr4 import *
 from antlr4.InputStream import InputStream
 from SvLexer import SvLexer as MyLexer
 
+
 if __name__ == '__main__':
     if len(sys.argv) > 1:
-        inputStream = FileStream(sys.argv[1])
+        inputStream = FileStream(sys.argv[1], encoding='utf-8')
     else:
         inputStream = InputStream(sys.stdin.read())
 
     lexer = MyLexer(inputStream)
 
-    t = lexer.nextToken()
-    while t.type != Token.EOF:
-        txt = t.text
+    tok = lexer.nextToken()
+    while tok.type != Token.EOF:
+        txt = tok.text
         if txt is not None:
-            txt = txt.replace("\n","\\n")
-            txt = txt.replace("\r","\\r")
-            txt = txt.replace("\t","\\t")
+            txt = txt.replace("\n", "\\n")
+            txt = txt.replace("\r", "\\r")
+            txt = txt.replace("\t", "\\t")
         else:
             txt = "<no text>"
-        #print(f'{t}')
-        print(f'ch#{t.channel} line {t.line}:{t.column}\t({t.start}, {t.stop})  \t<{t.type}>\t"{txt}"')
+        print(
+            f'ch#{tok.channel} line {tok.line}:{tok.column}\t({tok.start}, '
+            f'{tok.stop}) \t<{tok.type}>\t"{txt}"'
+        )
         t = lexer.nextToken()

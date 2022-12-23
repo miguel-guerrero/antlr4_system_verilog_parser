@@ -4,9 +4,9 @@ from SvSpecLexer import SvSpecLexer as MyLexer
 from SvSpecParser import SvSpecParser as MyParser
 from SvSpecListener import *
 import sys
-import re
 
-class MyPrinter(SvSpecListener):     
+
+class MyPrinter(SvSpecListener):
     spanLevel = 0
     hidden = False
 
@@ -18,11 +18,11 @@ class MyPrinter(SvSpecListener):
         return lexer.inputStream.getText(start, stop)
 
     def enterSentence(self, ctx):
-        #print(f'enterSentence ctx="{ctx.getText()}"', ctx, 'start=', ctx.start, 'stop=', ctx.stop)
+        # print(f'enterSentence ctx="{ctx.getText()}"', ctx, 'start=', ctx.start, 'stop=', ctx.stop)
         self.out = ''
 
     def exitSentence(self, ctx):
-        #print(self.getAllText(ctx))
+        # print(self.getAllText(ctx))
         print(self.out + ';')
 
     def enterRuleName(self, ctx):
@@ -54,7 +54,7 @@ class MyPrinter(SvSpecListener):
 
 
 def printTokens(argv):
-    input = FileStream(argv[1])
+    input = FileStream(argv[1], encoding='utf-8')
     lexer = MyLexer(input)
     stream = CommonTokenStream(lexer)
     parser = MyParser(stream)
@@ -64,16 +64,17 @@ def printTokens(argv):
 
 
 def parseAndWalk(argv):
-    input = FileStream(argv[1])
+    input = FileStream(argv[1], encoding='utf-8')
     lexer = MyLexer(input)
     stream = CommonTokenStream(lexer)
     parser = MyParser(stream)
     tree = parser.top()
-    #print(tree.toStringTree(recog=parser))
+    # print(tree.toStringTree(recog=parser))
     printer = MyPrinter()
     walker = ParseTreeWalker()
     walker.walk(printer, tree)
 
+
 if __name__ == '__main__':
     parseAndWalk(sys.argv)
-    #printTokens(sys.argv)
+    # printTokens(sys.argv)

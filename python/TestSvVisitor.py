@@ -5,16 +5,16 @@ from SvParser import SvParser as MyParser
 from SvVisitor import *
 import TreeUtils
 
-#from antlr4.InputStream import InputStream
+# from antlr4.InputStream import InputStream
 import sys
+
 
 class KeyPrinterVisitor(SvVisitor):
     pass
 
 
 def parseAndVisit(argv):
-
-    inputStream = FileStream(argv[1])
+    inputStream = FileStream(argv[1], encoding='utf-8')
 
     outputFileName = None
     if len(argv) >= 3:
@@ -26,12 +26,12 @@ def parseAndVisit(argv):
     print('parsing', file=sys.stderr)
     tree = parser.source_text()
     print('generating tree dump', file=sys.stderr)
-    #dump = tree.toStringTree(recog=parser)
+    # dump = tree.toStringTree(recog=parser)
 
     if outputFileName:
-        if outputFileName[-5:]==".lisp":
+        if outputFileName[-5:] == ".lisp":
             dump = TreeUtils.toLispStringTree(tree, recog=parser)
-        else: #json style is default
+        else:  # json style is default
             dump = TreeUtils.toJsonStringTree(tree, recog=parser)
         with open(outputFileName, 'wt') as fout:
             print(dump, file=fout)
@@ -39,7 +39,6 @@ def parseAndVisit(argv):
     printer = KeyPrinterVisitor()
     printer.visit(tree)
 
-if __name__ == '__main__':
-    print('starting', file=sys.stderr)
-    parseAndVisit(sys.argv)
 
+if __name__ == '__main__':
+    parseAndVisit(sys.argv)

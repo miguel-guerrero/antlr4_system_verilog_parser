@@ -2,7 +2,7 @@
 
 # ANTLR v4 installation
 
-The file bin/antlr-4.8-complete.jar is provided with this distribution as a convenience to simplify installation. ANTLRv4 is distributed under its own license. See https://www.antlr.org for details.
+The file bin/antlr-4.11.1-complete.jar is provided with this distribution as a convenience to simplify installation. ANTLRv4 is distributed under its own license. See https://www.antlr.org for details.
 
 Note that if using python target additional steps will be
 required (also pointed out in the same page above) to include
@@ -10,26 +10,11 @@ run-time python support
 
 # The SV parser included here doesn't include a preprocessor
 
-The testing Makefiles assume 'vppreproc' is installed with either 
-of the following methods:
+The testing Makefiles assume Icarus Verilog is installed n the path to be used as a verilog pre-processor
 
-a) Using apt facility:
+See Icarus Verilog (http://iverilog.icarus.com/) for installation instructions.
 
-    $ sudo apt install libverilog-perl
-
-b) Or https://metacpan.org/pod/Verilog::Preproc
-
-    $ perl -MCPAN -e install Verilog::Netlist::File
-    $ perl -MCPAN -e install Verilog::Preproc
-    $ perl -MCPAN -e install vppreproc
-
-Examples of invocation:
-
-    $ vppreproc x.vp
-    $ vppreproc x.vp --simple
-
-if not found but Icarus-Verilog (iverilog) is found in the path, then
-Icarus Verilog (http://iverilog.icarus.com/) will be used as pre-processor.
+The preprocessor is accessed through the wrapper script 'sv_preproc.sh' and can be modified if needed.
 
 
 # Java binding
@@ -44,16 +29,14 @@ the Java binding. The code has been tested with the following:
 
 # Python binding
 
-To install the python binding dependencies do the following:
+Depending on your system you may need *sudo* or not on the following:
 
-
-    $ sudo python3 -mpip install -r requirements.txt
+    $ python3 -mpip install -r requirements.txt
     
- or
+you can also install it locally: 
  
     $ python3 -mpip install -r requirements.txt --user
  
-if root permissions are not available.
 
 This will install antlr4 python3 runtime and other misc packages
 used to process JSON and XML files on the generated syntax trees

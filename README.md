@@ -22,6 +22,11 @@ spec (nothing has been intentionally left behind out of the grammar).
 
 Aside for the grammar few utilities are included to facilitate processing of the generated syntax tree.
 
+# QUICK START
+
+  $ ./install.sh
+  $ ./regress.sh
+
 # BINDINGS
 
 Examples on **Java** and **Python** bindings are provided. As of today Python
@@ -34,6 +39,9 @@ course another option. Only java and python bindings have been tested by the aut
 grammar definition should be equally usable on other bindings.
 
     $ make                         -> process grammar though antlr4 to generate python/java artifacts
+
+Run some tests with java bindings:
+
     $ cd java                      
     $ make test1
     $ make TESTS/rstgen.json       -> parse TESTS/rstgen.sv and generate syntax tree 
@@ -48,7 +56,7 @@ To process a System Verilog file and generate a syntax tree the wrapper script `
     $ make                          -> do once
     $ ./sv_parshe.sh
     
-    Usage: ./sv_parse.sh [-python|-java] [-lisp|-json|-xml] filename ...
+    Usage: ./sv_parse.sh [-python|-java] [-lisp|-json|-xml] [-d outdir] filename ...
 
     Code binding to use is defined by the following:
       -python : to use python binding
@@ -98,7 +106,7 @@ errors preprocessing Verilog program.
 #Error pre-processing TESTS/core_region.sv, skipping it
 ```
 
-The reason is that the parser requires an external system-verilog preprocessor (I.e. it parses verilog without pre-processing directives, or assumes they are  already expanded). The script looks for two open source tools in the path, ***vppreproc*** and ***iverilog*** (Icarus verilog used as pre-processor only). At least one of them needs to be installed and available in the path.
+The reason is that the parser requires an external system-verilog preprocessor (I.e. it parses verilog without pre-processing directives, or assumes they are  already expanded). The script looks for ***iverilog*** (Icarus verilog used as pre-processor only) in the path. 
 
 2. If you see this:
 
@@ -110,7 +118,7 @@ or
 
     Error: Could not find or load main class Testlisp
 
-remember you need to do ```make``` at least once
+remember you need to do ```make``` at least once on the root directory
 
 
 # TESTS
@@ -131,24 +139,24 @@ Suggestions for improvement and contributions are most welcomed
 
 # DEPENDENCIES
 
-- The SV parser included here doesn't include a preprocessor
-The testing assumes either **vppreproc** or **iverilog** are 
-installed and in the path to be used as pre-processors. However this can
-be replaced in the scripts with any other preprocessor tool
+- The SV parser included here doesn't include a verilog preprocessor
+The testing assumes  **iverilog** is installed and in the path to be 
+used as pre-processors. However this can be replaced in the scripts 
+with any other preprocessor tool
 
 - JDK if using java binding (recommended for speed), otherwise 
 just the JRE
 
 - ANTLR distribution. A copy of the version used for testing is under the 
-bin directory for simplicity of installation. It is expected to be 
-copied under /usr/local/lib however it is simple to change the expected
-path in the scripts if required.
+bin directory for simplicity of installation. It is not required to 
+be installed globally. All code here refers to the local copy
 
-- Python 3 if using python binding (with pypy3 recommended). Testing has
-been performed with Python 3.6.5 and mostly pypy3 for speed.
+- Python 3 if using python binding Testing has been performed with 
+Python 3.6.5 and 3.10.8 but other pytho3 versions are expected to be
+ok.
 
-Python 3.6.5 has been used for testing but is expected that lower
-python 3 distributions may be compatible. 
+- if pypy3 is detected it will be used by sv_parse.sh parser script as it
+gets a significant speed up over python3. But this is not required.
 
 - Some python packages
 

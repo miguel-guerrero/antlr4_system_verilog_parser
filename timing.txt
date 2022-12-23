@@ -1,0 +1,47 @@
+Timing for the regression using several bindings
+
+System information
+----------------------------------------------
+
+MacBook Air
+Darwin --- 19.6.0 Darwin Kernel Version 19.6.0: Mon Aug 31 22:12:52 PDT 2020; root:xnu-6153.141.2~1/RELEASE_X86_64 x86_64
+
+java --version
+java 15.0.2 2021-01-19
+Java(TM) SE Runtime Environment (build 15.0.2+7-27)
+Java HotSpot(TM) 64-Bit Server VM (build 15.0.2+7-27, mixed mode, sharing)
+
+
+pypy3 --version
+Python 3.7.13 (7e0ae751533460d5f89f3ac48ce366d8642d1db5, Apr 26 2022, 09:25:06)
+[PyPy 7.3.9 with GCC Apple LLVM 12.0.0 (clang-1200.0.32.29)]
+
+python3 --version
+Python 3.10.8
+
+
+Using java binding
+----------------------------------------------
+time ./sv_parse.sh -java -lisp TESTS/*.sv
+
+real	1m35.225s
+user	3m9.843s
+sys	    0m11.324s
+
+
+Using python binding with pypy3
+----------------------------------------------
+time ./sv_parse.sh -python -lisp TESTS/*.sv
+
+real	5m44.249s
+user	5m22.947s
+sys	    0m6.822s
+
+
+Using python binding with python3
+----------------------------------------------
+time ./sv_parse.sh -python -lisp TESTS/*.sv
+
+real	16m13.183s
+user	14m56.486s
+sys	    0m6.541s
