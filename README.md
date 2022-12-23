@@ -143,6 +143,8 @@ Suggestions for improvement and contributions are most welcomed
 
 # DEPENDENCIES
 
+See INSTALL.md for details (running ./install.sh should cover requiremetns).
+
 - The SV parser included here doesn't include a verilog preprocessor
 The testing assumes  **iverilog** is installed and in the path to be 
 used as pre-processors. However this can be replaced in the scripts 
@@ -163,8 +165,6 @@ ok.
 gets a significant speed up over python3. But this is not required.
 
 - Some python packages
-
-See INSTALL.md for details
 
 # LICENSE
 
