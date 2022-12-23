@@ -18,15 +18,20 @@ if [ "$1" == "" ]; then
     exit 1
 fi
 
+
+# find absolute path to script following symlinks if needed
 src="${BASH_SOURCE[0]}"
-if [ -s "$src" ]; then
-    src=$(readlink $src)
+src_abs="$(cd "$(dirname "$src")" && pwd)/$(basename "$src")"
+if [ -s "$src_abs" ]; then  # follow symbolic link
+    src_abs=$(dirname $src_abs)/$(readlink $src_abs)
 fi
-top_bin=$(cd -- "$( dirname -- "$src" )" 2> /dev/null && pwd)
-top=$top_bin/..
+src_path="$(dirname $src_abs)" 
+
+# define vars for top directory
+top_bin=$src_path
+top="$top_bin/.."
 JAR=$(ls $top_bin/antlr*.jar)
 export CLASSPATH="${top}/java:$JAR:$CLASSPATH"
-echo "JAR=$JAR"
 echo "CLASSPATH=$CLASSPATH"
 
 # choose pypy3 if available
