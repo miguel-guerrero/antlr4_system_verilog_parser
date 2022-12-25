@@ -1,6 +1,6 @@
 
 all:
-	#make -C Ebnf all
+	# make -C Ebnf all  # not needed, only used to develop Sv.g4
 	make -C python all
 	make -C java all
 

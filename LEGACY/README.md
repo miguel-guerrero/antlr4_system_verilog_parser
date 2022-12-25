@@ -5,3 +5,8 @@ pdf file.
 
 It is no longer required and may be removed at 
 any point of time.
+
+The directory SimpleHtml contains a grammar
+that helped in the conversion from html exported
+from .docx file into plain text and was more
+of a way to learn antlr4

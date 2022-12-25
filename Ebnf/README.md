@@ -1,3 +1,7 @@
+This folder is here for historical reasons. The code used
+here was used to develop the Sv.g4 grammar from an extract
+of the original spec.
+
 This folder contains a grammar to transform an EBNF grammar 
 written in the notation of the original System Verilog 
 appendix A document to the type of EBNF required by ANTLR.
