@@ -151,20 +151,20 @@ used as pre-processors. However this can be replaced in the scripts
 with any other preprocessor tool
 
 - JDK if using java binding (recommended for speed), otherwise 
-just the JRE
+just the JRE (java runtime)
 
-- ANTLR distribution. A copy of the version used for testing is under the 
+- ANTLR4 distribution. A copy of the version used for testing is under the 
 bin directory for simplicity of installation. It is not required to 
 be installed globally. All code here refers to the local copy
 
 - Python 3 if using python binding Testing has been performed with 
-Python 3.6.5 and 3.10.8 but other pytho3 versions are expected to be
+Python 3.6.5 and 3.10.8 but other python3 versions are expected to be
 ok.
 
 - if pypy3 is detected it will be used by sv_parse.sh parser script as it
 gets a significant speed up over python3. But this is not required.
 
-- Some python packages
+- Some python packages (see requirements.txt)
 
 # LICENSE
 
