@@ -1,5 +1,5 @@
-# antlr_system_verilog_grammar
-ANTLR grammar for System Verilog 2017 HDL
+# antlr4_system_verilog_parser
+ANTLR4 grammar and parsing utilities for System Verilog 2017 (full support)
 
 
 # INTRODUCTION
