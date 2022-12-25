@@ -9,6 +9,19 @@ import TreeUtils
 import sys
 
 
+# convert s json structure into xml
+def json2xml(dump: str) -> str:
+    import json
+    import dict2xml
+    d = json.loads(dump)
+    outp = ""
+    outp += '<?xml version="1.0"?>\n'
+    outp += "<top>\n"
+    outp += dict2xml.dict2xml(d) + "\n"
+    outp += "</top>\n"
+    return outp
+
+
 class KeyPrinterVisitor(SvVisitor):
     pass
 
@@ -27,12 +40,22 @@ def parseAndVisit(argv):
     # dump = tree.toStringTree(recog=parser)
 
     if outputFileName:
-        if outputFileName[-5:] == ".lisp":
-            dump = TreeUtils.toLispStringTree(tree, recog=parser)
-        else:  # json style is default
+        ext = outputFileName[outputFileName.rindex(".") + 1:]
+        if ext in ("lisp", "json", "xml"):
+            if ext == "lisp":
+                dump = TreeUtils.toLispStringTree(tree, recog=parser)
+            elif ext == "json":
+                dump = TreeUtils.toJsonStringTree(tree, recog=parser)
+            elif ext == "xml":
+                dump = TreeUtils.toJsonStringTree(tree, recog=parser)
+                dump = json2xml(dump)
+
+            with open(outputFileName, 'wt') as fout:
+                print(dump, file=fout)
+        else:
+            # using JSON as default
             dump = TreeUtils.toJsonStringTree(tree, recog=parser)
-        with open(outputFileName, 'wt') as fout:
-            print(dump, file=fout)
+            print(dump)
 
     printer = KeyPrinterVisitor()
     printer.visit(tree)
