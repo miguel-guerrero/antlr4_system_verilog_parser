@@ -33,6 +33,16 @@ post.*.sv
 __pycache__
 
 
-# antlr related
+# antlr related generated files
 *.interp
 *.tokens
+java/SvBaseListener.java
+java/SvBaseVisitor.java
+java/SvLexer.java
+java/SvListener.java
+java/SvParser.java
+java/SvVisitor.java
+python/SvLexer.py
+python/SvListener.py
+python/SvParser.py
+python/SvVisitor.py

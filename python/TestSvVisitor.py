@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from antlr4 import *
-from SvLexer import SvLexer as MyLexer
-from SvParser import SvParser as MyParser
+from SvLexer import SvLexer
+from SvParser import SvParser
 from SvVisitor import *
 import TreeUtils
 
@@ -20,12 +20,10 @@ def parseAndVisit(argv):
     if len(argv) >= 3:
         outputFileName = argv[2]
 
-    lexer = MyLexer(inputStream)
+    lexer = SvLexer(inputStream)
     stream = CommonTokenStream(lexer)
-    parser = MyParser(stream)
-    print('parsing', file=sys.stderr)
+    parser = SvParser(stream)
     tree = parser.source_text()
-    print('generating tree dump', file=sys.stderr)
     # dump = tree.toStringTree(recog=parser)
 
     if outputFileName:

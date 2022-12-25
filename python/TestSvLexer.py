@@ -7,7 +7,7 @@ from SvLexer import SvLexer as MyLexer
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
-        inputStream = FileStream(sys.argv[1], encoding='utf-8')
+        inputStream = FileStream(sys.argv[1]) #, encoding='utf-8')
     else:
         inputStream = InputStream(sys.stdin.read())
 

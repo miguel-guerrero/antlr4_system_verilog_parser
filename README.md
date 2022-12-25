@@ -44,10 +44,10 @@ Run some tests with java bindings:
 
     $ cd java                      
     $ make test1
-    $ make TESTS/rstgen.json       -> parse TESTS/rstgen.sv and generate syntax tree 
-                                      dumped onto TESTS/core_region.json
-    $ make TESTS/rstgen.lisp       -> parse TESTS/rstgen.sv and generate syntax tree 
-                                      dumped onto TESTS/core_region.lisp
+    $ make CORPUS/rstgen.json      -> parse CORPUS/rstgen.sv and generate syntax tree 
+                                      dumped onto CORPUS/core_region.json
+    $ make CORPUS/rstgen.lisp      -> parse CORPUS/rstgen.sv and generate syntax tree 
+                                      dumped onto CORPUS/core_region.lisp
 
 # HOWTO
 
@@ -70,7 +70,7 @@ To process a System Verilog file and generate a syntax tree the wrapper script `
 
 The recommended flow is to use the java binding (fastest) and XML output format, for simpler post-processing. For example:
 
-    $ ./sv_parse.sh -xml TESTS/rstgen.sv 
+    $ ./sv_parse.sh -xml CORPUS/rstgen.sv 
     
  The result would be 'rstgen.sv.xml' (it would append .json/.lisp if those output formats are requested)
    
@@ -78,7 +78,7 @@ The recommended flow is to use the java binding (fastest) and XML output format,
 
 One example of data extraction from a generated XML file is included under ```extract``` directory. It extracts few items from interfaces defined in that file. For example:
 
-    $ ./sv_parse.sh -xml TESTS/apb_bus.sv
+    $ ./sv_parse.sh -xml CORPUS/apb_bus.sv
     $ extract/dump_xml_iface.py apb_bus.sv.xml
 
 Generates:
@@ -103,7 +103,7 @@ variable_identifier: pslverr
 
 ```
 errors preprocessing Verilog program.
-#Error pre-processing TESTS/core_region.sv, skipping it
+#Error pre-processing CORPUS/core_region.sv, skipping it
 ```
 
 The reason is that the parser requires an external system-verilog preprocessor (I.e. it parses verilog without pre-processing directives, or assumes they are  already expanded). The script looks for ***iverilog*** (Icarus verilog used as pre-processor only) in the path. 
@@ -123,15 +123,15 @@ remember you need to do ```make``` at least once on the root directory
 
 # TESTS
 
-A number of System Verilog files are included as test corpus under the ```TESTS``` directory. They are currently
+A number of System Verilog files are included as test corpus under the ```CORPUS``` directory. They are currently
 taken from the RISC-V Pulpino project but more will be added over time. They are covered
 under their own license, and are included here only as a convenience. To run them do:
 
 
     $ make                          -> do once
-    $ ./sv_parse.sh TESTS/*.sv
+    $ ./sv_parse.sh CORPUS/*.sv
     
-You can also run all of them:
+You can also run all of them (this will run with both java and python bindings)
 
     $ ./regress.sh
 

@@ -22,7 +22,7 @@ Python 3.10.8
 
 Using java binding
 ----------------------------------------------
-time ./sv_parse.sh -java -lisp TESTS/*.sv
+time ./sv_parse.sh -java -lisp CORPUS/*.sv
 
 real	1m35.225s
 user	3m9.843s
@@ -31,7 +31,7 @@ sys	    0m11.324s
 
 Using python binding with pypy3
 ----------------------------------------------
-time ./sv_parse.sh -python -lisp TESTS/*.sv
+time ./sv_parse.sh -python -lisp CORPUS/*.sv
 
 real	5m44.249s
 user	5m22.947s
@@ -40,7 +40,7 @@ sys	    0m6.822s
 
 Using python binding with python3
 ----------------------------------------------
-time ./sv_parse.sh -python -lisp TESTS/*.sv
+time ./sv_parse.sh -python -lisp CORPUS/*.sv
 
 real	16m13.183s
 user	14m56.486s

@@ -8,10 +8,10 @@ all:
 $(NAME)Lexer.py, $(NAME)Parser.py: $(NAME).g4
 	$(ANTLR4) -Dlanguage=Python3 -visitor $(NAME).g4
 
-test1: TESTS/rstgen.sv
+test1: CORPUS/rstgen.sv
 	@./Test$(NAME)Visitor.py $<
 
-test1x: TESTS/rstgen.sv
+test1x: CORPUS/rstgen.sv
 	@./Test$(NAME)Lexer.py $<
 
 %.v: %.vp

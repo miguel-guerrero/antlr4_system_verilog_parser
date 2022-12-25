@@ -28,10 +28,10 @@ all:
 javac:
 	javac -Xlint:deprecation *.java
 
-test1: TESTS/rstgen.sv
+test1: CORPUS/rstgen.sv
 	time $(GRUN) $(NAME) source_text $(ARGS) $<
 
-test1g: TESTS/rstgen.sv
+test1g: CORPUS/rstgen.sv
 	$(GRUN) $(NAME) source_text $(ARGS) -gui $<
 
 %.class: %.java

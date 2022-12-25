@@ -7,8 +7,8 @@ to process few input sv files
     $ make test1g -> will parse a SV file, dump tokens associated to it
                      and show the syntax tree graphically
 
-    $ make TESTS/ram_mux.json -> will generate a JSON dump of ram_mux.sv syntax tree
-    $ make TESTS/ram_mux.lisp -> will generate a LISP style dump of ram_mux.sv syntax tree
+    $ make CORPUS/ram_mux.json -> will generate a JSON dump of ram_mux.sv syntax tree
+    $ make CORPUS/ram_mux.lisp -> will generate a LISP style dump of ram_mux.sv syntax tree
 
 The 2 dump formats above can be easilly imported into any other language tool
 The Makefile includes ways to process *.v files (more examples provided in this

@@ -70,7 +70,7 @@ while [ "$1" != "" ]; do
         fi
         fileOut="$outDir/$inpBase.$ext"
         if [ $pyth_binding == 0 ]; then
-            echo "=== generating $inpBase.$ext with java binding ===" 
+            echo "=== generating $inpBase.$ext (using java binding) ===" 
             if [ "$ext" == "xml" ]; then
                 # xml is generated doing first JSON and then converting to XML
                 java Testjson $postProc | $top_bin/json2xml_filter.py > $fileOut
@@ -78,7 +78,7 @@ while [ "$1" != "" ]; do
                 java Test$ext $postProc > $fileOut
             fi
         else
-            echo "=== generating $inpBase.$ext with python binding ===" 
+            echo "=== generating $inpBase.$ext (using python binding) ===" 
             if [ "$ext" == "xml" ]; then
                 # xml is generated doing first JSON and then converting to XML
                 ${top}/python/TestSvVisitor.py $postProc /dev/stdout | $top_bin/json2xml_filter.py > $fileOut
