@@ -54,7 +54,7 @@ Run some tests with java bindings:
 To process a System Verilog file and generate a syntax tree the wrapper script ```sv_parse.sh``` is provided:
 
     $ make                          -> do once
-    $ ./sv_parshe.sh
+    $ ./sv_parse.sh
     
     Usage: ./sv_parse.sh [-python|-java] [-lisp|-json|-xml] [-d outdir] filename ...
 
